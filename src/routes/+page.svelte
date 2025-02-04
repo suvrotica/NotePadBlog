@@ -10,7 +10,5 @@
       colorScheme="ocean"
     />
     </div>
-<h1 class="text-3xl font-bold underline dark:text-neutral-200 dark:bg-neutral-900">
-    Hello world!
-  </h1>
+
   

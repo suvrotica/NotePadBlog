@@ -1,6 +1,28 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-    --color-mint-500: oklch(0.72 0.11 178);
+
     --font-poppins: Poppins, sans-serif;
-  }
+}
+
+@layer components {
+    .typography {
+        p {
+            font-size: var(--text-base);
+            color: var(--color-gray-700);
+        }
+
+        h1 {
+            font-size: var(--text-2xl--line-height);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-gray-950);
+        }
+
+        h2 {
+            font-size: var(--text-xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-gray-950);
+        }
+    }
+}
