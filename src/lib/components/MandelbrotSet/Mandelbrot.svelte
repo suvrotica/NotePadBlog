@@ -67,7 +67,7 @@
 		worker.postMessage({
 			width,
 			height,
-			maxIterations: useTemp ? Math.min(50, maxIterations) : maxIterations,
+			maxIterations: useTemp ? Math.min(10, maxIterations) : maxIterations,
 			zoom,
 			centerX,
 			centerY,
@@ -233,7 +233,7 @@
 					step="50"
 					bind:value={maxIterations}
 					class="w-full accent-primary-500 bg-neutral-700/50"
-					onchange={() => renderMandelbrot(false)}
+					onchange={() => renderMandelbrot(true)}
 				/>
 				<span class="text-xs text-neutral-400">{maxIterations}</span>
 			</div>
@@ -243,7 +243,7 @@
 					id="colorScheme"
 					bind:value={colorScheme}
 					class="w-full bg-neutral-800/50 text-neutral-50 rounded-md border-neutral-700 focus:ring-primary-500"
-					onchange={() => renderMandelbrot(false)}
+					onchange={() => renderMandelbrot(true)}
 				>
 					<option value="classic">Classic</option>
 					<option value="ocean">Ocean</option>

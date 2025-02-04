@@ -4,8 +4,8 @@
     
     <div class="w-full max-w-4xl mx-auto p-4">
       <MandelbrotSet 
-      width={1800}
-      height={1600}
+      width={800}
+      height={600}
       maxIterations={100}
       colorScheme="classic"
     />
