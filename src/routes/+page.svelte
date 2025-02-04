@@ -7,7 +7,7 @@
       width={1800}
       height={1600}
       maxIterations={100}
-      colorScheme="ocean"
+      colorScheme="classic"
     />
     </div>
 
