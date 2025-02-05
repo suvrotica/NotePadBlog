@@ -1,7 +1,7 @@
 <!-- src/routes/+page.svelte -->
 <script lang="ts">
   import { MandelbrotSet } from '$lib/components/MandelbrotSet';
-  import Whiteboard from '$lib/components/Whiteboard.svelte';
+  import Whiteboard from '$lib/components/Sketch/Whiteboard.svelte';
   
   // Sketch state
   let currentSketch = $state(null);

@@ -1,4 +1,4 @@
-<!-- src/lib/components/Whiteboard.svelte -->
+<!-- src/lib/components/Sketch/Whiteboard.svelte -->
 <script lang="ts">
     // Props for the whiteboard
     let { 

@@ -1,8 +1,8 @@
 // src/routes/api/posts/+server.ts
-import type { RequestHandler } from './$types';
+import type { RequestEvent } from '@sveltejs/kit';
 import { json } from '@sveltejs/kit';
 
-export const POST: RequestHandler = async ({ request }) => {
+export async function POST({ request }: RequestEvent) {
   try {
     const post = await request.json();
     
@@ -15,4 +15,4 @@ export const POST: RequestHandler = async ({ request }) => {
   } catch (error) {
     return new Response(String(error), { status: 500 });
   }
-};
+}

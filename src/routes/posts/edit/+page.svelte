@@ -1,6 +1,6 @@
 <!-- src/routes/posts/edit/+page.svelte -->
 <script lang="ts">
-    import Whiteboard from '$lib/components/Whiteboard.svelte';
+    import Whiteboard from '$lib/components/Sketch/Whiteboard.svelte';
     
     // Post data
     let post = $state({

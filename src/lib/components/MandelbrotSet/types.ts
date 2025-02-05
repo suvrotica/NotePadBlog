@@ -22,3 +22,4 @@ export type WorkerData = {
   centerY: number;
   colorScheme: ColorScheme;
 };
+
