@@ -101,7 +101,7 @@
     role="dialog"
     aria-labelledby="sketch-modal-title"
     aria-modal="true"
-    class="fixed inset-0 z-50 overflow-auto bg-black/50 
+    class="fixed inset-0 z-50 overflow-auto bg-black/50 dark:bg-black/50
            backdrop-blur-sm flex items-center justify-center p-4"
   >
     <!-- Backdrop -->
@@ -122,20 +122,20 @@
     
     <!-- Modal content -->
     <div
-      class="relative bg-white dark:bg-neutral-900 rounded-lg max-w-5xl w-full
+      class="relative bg-neutral-900/80 dark:bg-neutral-700/80 rounded-lg max-w-5xl w-full  dark:text-neutral-400
              max-h-[90vh] overflow-auto shadow-xl"
       role="document"
     >
       <!-- Header -->
       <div class="sticky top-0 z-10 flex justify-between items-center p-4
-                  bg-white dark:bg-neutral-900 border-b
-                  dark:border-neutral-800">
-        <h2 
-          id="sketch-modal-title" 
-          class="text-xl font-bold text-neutral-900 dark:text-neutral-100"
-        >
-          {selectedSketch.title}
-        </h2>
+                  bg-neutral-800 dark:bg-neutral-900 border-b border-neutral-700
+                  dark:border-neutral-600  dark:text-neutral-400">
+                  <h2 
+                  id="sketch-modal-title" 
+                  class="text-xl font-bold dark:text-neutral-400"
+                >
+                  {selectedSketch.title}
+                </h2>
         
         <div class="flex gap-2">
           {#if isEditMode}
@@ -143,7 +143,7 @@
               onclick={handleSave}
               disabled={!hasUnsavedChanges}
               class="px-4 py-2 rounded-lg font-medium
-                     bg-primary-500 text-white 
+                     bg-primary-500  dark:text-neutral-400 
                      hover:bg-primary-600
                      disabled:opacity-50
                      transition-colors duration-200"
@@ -190,7 +190,7 @@
       
       <!-- Whiteboard -->
       <div class="p-4">
-        <div class="h-[600px] bg-white dark:bg-neutral-800 rounded-lg border
+        <div class="h-[600px] bg-white rounded-lg border
                     dark:border-neutral-700 overflow-hidden">
           <Whiteboard
             initialData={selectedSketch.data}

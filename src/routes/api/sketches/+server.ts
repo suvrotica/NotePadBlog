@@ -2,12 +2,10 @@
 import { json } from '@sveltejs/kit';
 import type { RequestEvent } from '@sveltejs/kit';
 import type { Sketch } from "$lib/components/Sketch/types";
-
-// Export the sketches array so it can be shared with the [id] endpoint
-export let sketches: Sketch[] = [];
+import { store } from '$lib/server/store';
 
 export async function GET() {
-  return json(sketches);
+  return json(store.sketches);
 }
 
 export async function POST({ request }: RequestEvent) {
@@ -16,10 +14,10 @@ export async function POST({ request }: RequestEvent) {
   const newSketch: Sketch = {
     ...sketch,
     id: crypto.randomUUID(),
-    created: new Date().toISOString(),
+    created: new Date().toISOString(), 
     updated: new Date().toISOString()
   };
   
-  sketches.push(newSketch);
+  store.sketches.push(newSketch);
   return json(newSketch);
 }

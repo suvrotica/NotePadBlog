@@ -23,16 +23,7 @@
       />
     </section>
   
-    <!-- Whiteboard Section -->
-    <section class="rounded-lg overflow-hidden shadow-lg">
-      <h2 class="text-xl font-bold mb-4">Sketch Pad</h2>
-      <div class="h-[600px] border rounded-lg bg-white">
-        <Whiteboard
-          initialData={currentSketch}
-          onUpdate={handleSketchUpdate}
-        />
-      </div>
-    </section>
+    
   
     <!-- Optional: Controls or Save Button -->
     <div class="flex justify-end">

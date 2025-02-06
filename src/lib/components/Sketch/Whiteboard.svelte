@@ -141,7 +141,8 @@
   }
 </script>
 
-<div class="relative w-full h-full">
+
+<div class="relative w-full h-full bg-white rounded-lg">
   <canvas
     bind:this={canvas}
     class="w-full h-full touch-none"
@@ -153,3 +154,17 @@
     style="touch-action: none"
   ></canvas>
 </div>
+
+<style>
+  @reference "tailwindcss/theme";
+
+  canvas {
+    /* Improve stroke visibility */
+    mix-blend-mode: normal;
+  }
+
+  /* Adjust stroke color based on theme */
+  :global(.dark) canvas {
+    stroke: theme(--color-white);
+  }
+</style>
