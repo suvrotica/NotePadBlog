@@ -44,19 +44,23 @@
     }
     
     async function updateSketch(sketch: Sketch) {
-      const response = await fetch(`/api/sketches/${sketch.id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(sketch)
-      });
-      
-      if (response.ok) {
-        const updatedSketch = await response.json();
-        sketches = sketches.map(s => 
-          s.id === updatedSketch.id ? updatedSketch : s
-        );
-      }
+    const response = await fetch(`/api/sketches/${sketch.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(sketch)
+    });
+    
+    if (response.ok) {
+      const updatedSketch = await response.json();
+      sketches = sketches.map(s => 
+        s.id === updatedSketch.id ? updatedSketch : s
+      );
+    } else {
+      console.error('Failed to update sketch:', await response.text());
+      // You might want to show an error message to the user
+      alert('Failed to update sketch. Please try again.');
     }
+  }
     </script>
     
     <div class="max-w-7xl mx-auto p-4">
