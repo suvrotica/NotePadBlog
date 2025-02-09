@@ -32,20 +32,29 @@
 
   // Initialize Fabric.js canvas
   let initPromise = $state<Promise<void>>();
+  
   $effect(() => {
     if (!canvasElement || typeof window === 'undefined') return;
-
     initPromise = initCanvas();
   });
 
   async function initCanvas() {
     const { Canvas, loadSVGFromString, Group } = await import('fabric');
     
+    // Get the container dimensions
+    const container = canvasElement!.parentElement;
+    const width = container?.clientWidth ?? 800;
+    const height = container?.clientHeight ?? 600;
+    
+    // Set canvas dimensions
+    canvasElement!.width = width;
+    canvasElement!.height = height;
+    
     fabricCanvas = new Canvas(canvasElement!, {
       isDrawingMode: !readOnly && activeTool === 'draw',
       selection: !readOnly,
-      width: canvasElement!.clientWidth,
-      height: canvasElement!.clientHeight
+      width: width,
+      height: height
     });
 
     // Set up drawing brush
@@ -98,6 +107,7 @@
   // Update drawing settings when tool changes
   $effect(() => {
     if (!fabricCanvas) return;
+    
     fabricCanvas.isDrawingMode = !readOnly && activeTool === 'draw';
     
     if (fabricCanvas.freeDrawingBrush) {
@@ -178,6 +188,13 @@
     fabricCanvas.clear();
     handleUpdate();
   }
+
+  function setTool(tool: typeof activeTool) {
+    activeTool = tool;
+    if (fabricCanvas) {
+      fabricCanvas.isDrawingMode = !readOnly && tool === 'draw';
+    }
+  }
 </script>
 
 <div class="relative w-full h-full bg-white rounded-lg">
@@ -185,20 +202,23 @@
     <div class="absolute top-4 left-4 flex gap-2 bg-white/80 backdrop-blur rounded-lg p-2 shadow-lg">
       <!-- Tool Selection -->
       <button
+        type="button"
         class="p-2 rounded-md transition-colors {activeTool === 'select' ? 'bg-primary-100 text-primary-700' : 'hover:bg-neutral-100'}"
-        onclick={() => activeTool = 'select'}
+        onclick={() => setTool('select')}
         title="Select"
       >
         ✋
       </button>
       <button
+        type="button"
         class="p-2 rounded-md transition-colors {activeTool === 'draw' ? 'bg-primary-100 text-primary-700' : 'hover:bg-neutral-100'}"
-        onclick={() => activeTool = 'draw'}
+        onclick={() => setTool('draw')}
         title="Draw"
       >
         ✏️
       </button>
       <button
+        type="button"
         class="p-2 rounded-md transition-colors hover:bg-neutral-100"
         onclick={addText}
         title="Add Text"
@@ -206,6 +226,7 @@
         T
       </button>
       <button
+        type="button"
         class="p-2 rounded-md transition-colors hover:bg-neutral-100"
         onclick={addRectangle}
         title="Add Rectangle"
@@ -213,6 +234,7 @@
         □
       </button>
       <button
+        type="button"
         class="p-2 rounded-md transition-colors hover:bg-neutral-100"
         onclick={addCircle}
         title="Add Circle"
@@ -238,6 +260,7 @@
 
       <!-- Clear Canvas -->
       <button
+        type="button"
         class="p-2 rounded-md transition-colors hover:bg-red-100 text-red-600"
         onclick={clearCanvas}
         title="Clear Canvas"
